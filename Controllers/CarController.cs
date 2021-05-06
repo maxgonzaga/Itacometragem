@@ -61,7 +61,7 @@ namespace Itacometragem.Controllers
                 }
                 else
                 {
-                    _data.Cars.Insert(car);
+                    _data.Cars.Update(car);
                 }
                 _data.Save();
                 return RedirectToAction("List");

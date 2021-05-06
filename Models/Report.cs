@@ -12,8 +12,8 @@ namespace Itacometragem.Models
             Rides = new List<Ride>();
         }
         
-        [Required(ErrorMessage = "Informe o nome do motorista.")]
-        public int DriverId { get; set; }
+        [Required(ErrorMessage = "Informe o nmotivo.")]
+        public int MotiveId { get; set; }
 
         [Required(ErrorMessage = "Informe a data inicial.")]
         [DataType(DataType.Date)]
@@ -27,7 +27,7 @@ namespace Itacometragem.Models
         public List<Ride> Rides { get; }
 
         [BindNever]
-        public Driver Driver { get; set; }
+        public Driver Motive { get; set; }
 
 
         public void AddRide(Ride ride)

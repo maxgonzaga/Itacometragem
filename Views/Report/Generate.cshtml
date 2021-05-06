@@ -4,12 +4,12 @@
     <div asp-validation-summary="All" class="text-danger"></div>
     <form class="mt-4 mb-4" asp-action="Generate" method="post">
         <div class="form-group mb-3">
-            <label class="form-label" asp-for="DriverId">Motorista</label>
-            <select class="form-select" asp-for="DriverId">
-                <option disabled="" selected="">Selecione o motorista</option>
-                @foreach (Driver driver in ViewBag.Drivers)
+            <label class="form-label" asp-for="MotiveId">Motivo</label>
+            <select class="form-select" asp-for="MotiveId">
+                <option disabled="" selected="">Selecione o motivo</option>
+                @foreach (Motive motive in ViewBag.Motives)
                 {
-                    <option value="@driver.DriverId">@driver.Name</option>
+                    <option value="@motive.MotiveId">@motive.Name</option>
                 }
             </select>
         </div>

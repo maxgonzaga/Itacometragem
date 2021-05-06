@@ -26,7 +26,7 @@ namespace Itacometragem.Controllers
         [HttpGet]
         public IActionResult Generate()
         {
-            ViewBag.Drivers = _data.Drivers.List();
+            ViewBag.Motives = _data.Motives.List();
             ViewBag.Action = "Gerar relatório";
             return View(new Report());
         }
@@ -43,7 +43,7 @@ namespace Itacometragem.Controllers
                     report.AddRide(ride);
                 }
 
-                report.Driver = _data.Drivers.Get(Convert.ToInt32(report.DriverId));
+                report.Motive = _data.Drivers.Get(Convert.ToInt32(report.MotiveId));
 
                 byte[] pdfFile = _reportService.GeneratePdfReport(report);
 
@@ -62,7 +62,7 @@ namespace Itacometragem.Controllers
         {
             QueryOptions<Ride> queryOptions = new QueryOptions<Ride>();
             queryOptions.Includes = "Car, Driver, Motive";
-            queryOptions.Where = ride => ride.DriverId == report.DriverId;
+            queryOptions.Where = ride => ride.MotiveId == report.MotiveId;
             queryOptions.Where = ride => ride.Date <= report.FinalDate &&
                 ride.Date >= report.InitialDate;
 

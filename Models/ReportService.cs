@@ -38,13 +38,14 @@ namespace Itacometragem.Models
                 </head>
                 <body>
                 <div>
-                <h2>Motorista: {report.Driver.Name}</h2>
+                <h2>Motivo: {report.Motive.Name}</h2>
                 <p>Data inicial: {report.InitialDate?.ToString("d")}</p>
                 <p>Data final: {report.FinalDate?.ToString("d")}</p>
                 <table><thead><tr>
                 <th>Data</th>
                 <th>Hora</th>
                 <th>Carro</th>
+                <th>Motorista</th>
                 <th>Distância</th>
                 <th>Motivo</th></tr></thead><tbody>";
 
@@ -54,6 +55,7 @@ namespace Itacometragem.Models
                 html += $"<td>{ride.Date?.ToString("d")}</td>";
                 html += $"<td>{ride.Date?.ToString("HH:mm")}";
                 html += $"<td>{ride.Car.Name}</td>";
+                html += $"<td>{ride.Driver.Name}</td>";
                 html += $"<td>{ride.GetDistance()}</td>";
                 html += $"<td>{ride.Motive.Name}</td>";
                 html += "</tr>";

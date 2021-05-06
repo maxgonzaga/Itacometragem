@@ -25,15 +25,9 @@ namespace Itacometragem.Controllers
             Dictionary<int, int?> motiveDistance = new Dictionary<int, int?>();
             IEnumerable<Motive> motives = _data.Motives.List();
 
-            foreach (Motive motive in motives)
-            {
-                motiveDistance.Add(motive.MotiveId, GetTotalDistancePerMotive(motive));
-            }
-
             MotiveListViewModel model = new MotiveListViewModel
             {
                 Motives = motives,
-                TotalDistancePerMotive = motiveDistance
             };
 
             return View(model);

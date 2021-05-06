@@ -20,7 +20,7 @@ namespace Itacometragem.Models
         public virtual IEnumerable<T> List(QueryOptions<T> options)
         {
             IQueryable<T> query = BuildQuery(options);
-            return query.ToList();
+            return query.AsNoTracking<T>().ToList();
         }
 
         private IQueryable<T> BuildQuery(QueryOptions<T> options)
@@ -59,7 +59,7 @@ namespace Itacometragem.Models
 
         public IEnumerable<T> List()
         {
-            return _dbSet.ToList();
+            return _dbSet.AsNoTracking<T>().ToList();
         }
 
         public virtual T Get(int id) => _dbSet.Find(id);

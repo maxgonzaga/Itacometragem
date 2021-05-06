@@ -8,6 +8,5 @@ namespace Itacometragem.Models
     public class MotiveListViewModel
     {
         public IEnumerable<Motive> Motives { get; set; }
-        public Dictionary<int, int?> TotalDistancePerMotive { get; set; }
     }
 }

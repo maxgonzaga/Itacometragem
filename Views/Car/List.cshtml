@@ -1,0 +1,43 @@
+﻿@model List<Car>
+<div class="container">
+
+    @if (TempData.Keys.Contains("deleteMessage"))
+    {
+        <h5 class="bg-info text-center text-white p-2">@TempData["deleteMessage"]</h5>
+    }
+
+    <a asp-action="Add" class="btn btn-primary mb-3">Adicionar novo carro</a>
+    <div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Nome do carro</th>
+                <th scope="col">Primeira quilometragem</th>
+                <th scope="col">Constante</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Car car in Model)
+            {
+                <tr>
+                    <td>@car.Name</td>
+                    <td>@car.InitialMileage</td>
+                    <td>@car.Constant?.ToString("N")</td>
+                    <td>
+                        <a class="edit"
+                           asp-controller="Car"
+                           asp-action="Edit"
+                           asp-route-id="@car.CarId">Editar</a>
+
+                        <a class="delete"
+                           asp-controller="Car"
+                           asp-action="Delete"
+                           asp-route-id="@car.CarId">Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+</div>

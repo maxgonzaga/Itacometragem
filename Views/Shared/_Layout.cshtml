@@ -1,0 +1,99 @@
+﻿@{ 
+    string controller = ViewContext.RouteData.Values["controller"].ToString();
+    string action = ViewContext.RouteData.Values["action"].ToString();
+    ViewBag.Title = "Itacometragem";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link href="~/css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-3">
+            <div class="container">
+                <a href="/" class="navbar-brand">Itacometragem</a>
+                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a asp-area=""
+                               asp-controller="Ride"
+                               asp-action="List"
+                               class="nav-link @(controller == "Ride" ? "active" : "")">Corridas</a>
+                        </li>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+
+                            <li class="nav-item">
+                                <a asp-area=""
+                                   asp-controller="Car"
+                                   asp-action="List"
+                                   class="nav-item nav-link @(controller == "Car" ? "active" : "")">Carros</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a asp-area=""
+                                   asp-controller="Driver"
+                                   asp-action="List"
+                                   class="nav-item nav-link @(controller == "Driver" ? "active" : "")">Motoristas</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a asp-area=""
+                                   asp-controller="Report"
+                                   asp-action="Generate"
+                                   class="nav-item nav-link @(controller == "Report" ? "active" : "")">Relatórios</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a asp-area=""
+                                   asp-controller="Motive"
+                                   asp-action="List"
+                                   class="nav-item nav-link @(controller == "Motive" ? "active" : "")">Motivos</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <form method="post"
+                                      asp-action="Logout"
+                                      asp-controller="account">
+                                    <input type="submit"
+                                           value="Sair"
+                                           class="btn btn-outline-light" />
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a asp-action="Login"
+                                   asp-controller="Account"
+                                   asp-area=""
+                                   class="btn btn-outline-light">Entrar</a>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+
+    <main class="pb-3">
+        @RenderBody()
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>

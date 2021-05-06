@@ -1,0 +1,27 @@
+﻿
+
+.input-validation-error {
+    border: 2px solid #dc3545;
+    background-color: #faebd7;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.validation-summary-errors ul {
+    list-style: none;
+}
+
+table tbody {
+    font-size: 14px;
+}
+
+table.table td a {
+    color: #000;
+    font-weight: bold;
+    display: inline-block;
+    text-decoration: none;
+    outline: none !important;
+    margin-right: 20px;
+}

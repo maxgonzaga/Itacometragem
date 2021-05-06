@@ -1,0 +1,21 @@
+﻿@model Motive
+
+<div class="container">
+
+    <h3 class="mb-3">Confirmar remoção</h3>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="card mb-4">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Motivo: @Model.Name</li>
+        </ul>
+    </div>
+
+    <form asp-action="Delete" method="post" class="mb-4">
+        <input type="hidden" asp-for="MotiveId" />
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a asp-controller="Motive" asp-action="List" class="btn btn-primary">Cancelar</a>
+    </form>
+
+</div>

@@ -1,0 +1,66 @@
+﻿@model Ride
+<div class="container">
+    <h3 class="mb-3">@ViewBag.Action</h3>
+    <form class="mt-4 mb-4" asp-action="Edit" method="post">
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="form-group mb-3">
+            <label class="form-label" asp-for="CarId">Carro utilizado</label>
+            <select asp-for="CarId" class="form-select">
+                <option disabled selected>Selecione o carro</option>
+                @foreach (Car car in ViewBag.Cars)
+                {
+                    <option value="@car.CarId">@car.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label" asp-for="Date">Data</label>
+            <input class="form-control" asp-for="Date" />
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label" asp-for="DriverId">Motorista</label>
+            <select class="form-select" asp-for="DriverId">
+                <option disabled selected>Selecione motorista</option>
+                @foreach (Driver driver in ViewBag.Drivers)
+                {
+                    <option value="@driver.DriverId">@driver.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label" asp-for="FinalMileage">Quilometragem final</label>
+            <input class="form-control" asp-for="FinalMileage" />
+        </div>
+
+
+        <div class="form-group mb-3">
+            <label class="form-label" asp-for="MotiveId">Motivo</label>
+            <select class="form-select" asp-for="MotiveId">
+                <option disabled selected>Selectione o motivo</option>
+                @foreach (Motive motive in ViewBag.Motives)
+                {
+                    <option value="@motive.MotiveId">@motive.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label" asp-for="Note">Notas</label>
+            <input class="form-control" asp-for="Note" />
+        </div>
+
+        <input type="hidden" asp-for="RideId" />
+
+        <div class="form-group mb-3">
+            <input type="submit" value="Submeter" class="btn btn-primary mr-3" />
+            <a asp-action="Add" class="btn btn-secondary">Cancelar</a>
+        </div>
+
+    </form>
+
+</div>

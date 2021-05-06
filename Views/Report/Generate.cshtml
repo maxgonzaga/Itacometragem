@@ -1,0 +1,32 @@
+﻿@model Report
+<div class="container">
+    <h3 class="mb-3">@ViewBag.Action</h3>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <form class="mt-4 mb-4" asp-action="Generate" method="post">
+        <div class="form-group mb-3">
+            <label class="form-label" asp-for="DriverId">Motorista</label>
+            <select class="form-select" asp-for="DriverId">
+                <option disabled="" selected="">Selecione o motorista</option>
+                @foreach (Driver driver in ViewBag.Drivers)
+                {
+                    <option value="@driver.DriverId">@driver.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label" asp-for="InitialDate">Data inicial:</label>
+            <input class="form-control" asp-for="InitialDate" />
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label" asp-for="FinalDate">Data final:</label>
+            <input class="form-control" asp-for="FinalDate" />
+        </div>
+
+        <div class="form-group mb-3">
+            <input type="submit" value="Gerar relatório" class="btn btn-primary" />
+        </div>
+
+    </form>
+</div>

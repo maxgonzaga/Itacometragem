@@ -1,0 +1,40 @@
+﻿@model MotiveListViewModel
+<div class="container">
+
+    @if (TempData.Keys.Contains("deleteMessage"))
+    {
+        <h5 class="bg-info text-center text-white p-2">@TempData["deleteMessage"]</h5>
+    }
+    <a asp-action="Add" class="btn btn-primary mb-3">Adicionar novo motivo</a>
+    <div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Distância</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Motive motive in Model.Motives)
+            {
+                <tr>
+                    <td>@motive.Name</td>
+                    <td>@Model.TotalDistancePerMotive[motive.MotiveId]</td>
+                    <td>
+                        <a class="edit"
+                           asp-controller="Motive"
+                           asp-action="Edit"
+                           asp-route-id="@motive.MotiveId">Editar</a>
+
+                        <a class="delete"
+                           asp-controller="Motive"
+                           asp-action="Delete"
+                           asp-route-id="@motive.MotiveId">Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+</div>

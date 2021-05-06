@@ -1,0 +1,22 @@
+﻿@model Ride
+
+<div class="container">
+
+    <h3 class="mb-3">Confirmar remoção</h3>
+
+    <div class="card mb-4">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Motorista: @Model.Driver.Name</li>
+            <li class="list-group-item">Data: @Model.Date</li>
+            <li class="list-group-item">Motivo: @Model.Motive.Name</li>
+            <li class="list-group-item">Quilometragem final: @Model.FinalMileage</li>
+        </ul>
+    </div>
+
+    <form asp-action="Delete" method="post" class="mb-4">
+        <input type="hidden" asp-for="RideId" />
+        <button type="submit" class="btn btn-primary">Excluir</button>
+        <a asp-controller="Ride" asp-action="Edit" class="btn btn-primary">Cancelar</a>
+    </form>
+
+</div>

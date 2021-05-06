@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Itacometragem", "Itacometragem.csproj", "{E23A835B-472E-4001-8299-F387B745C75A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItacometragemUnitTest", "..\ItacometragemUnitTest\ItacometragemUnitTest.csproj", "{F60A4F20-3B88-45FC-8761-DC8DFD6BC2AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E23A835B-472E-4001-8299-F387B745C75A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E23A835B-472E-4001-8299-F387B745C75A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E23A835B-472E-4001-8299-F387B745C75A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E23A835B-472E-4001-8299-F387B745C75A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F60A4F20-3B88-45FC-8761-DC8DFD6BC2AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F60A4F20-3B88-45FC-8761-DC8DFD6BC2AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F60A4F20-3B88-45FC-8761-DC8DFD6BC2AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F60A4F20-3B88-45FC-8761-DC8DFD6BC2AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA3C8A3B-A289-4267-A7EC-C15CEB576B0E}
+	EndGlobalSection
+EndGlobal

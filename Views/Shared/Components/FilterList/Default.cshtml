@@ -1,0 +1,49 @@
+﻿@model FilterData
+<form class="mb-3" asp-controller="Ride" asp-action="Filter" method="post">
+
+    <div class="row mb-2">
+        <div class="form-group col">
+            <label class="form-label" asp-for="DriverId">Motorista</label>
+            <select class="form-select"
+                    asp-for="DriverId"
+                    asp-items="@(new SelectList(Model.Drivers, "DriverId", "Name", Model.DriverId))">
+                <option value="all">Todos</option>
+            </select>
+        </div>
+
+        <div class="form-group col">
+            <label asp-for="MotiveId" class="form-label">Motivo</label>
+            <select class="form-select"
+                    asp-for="MotiveId"
+                    asp-items="@(new SelectList(Model.Motives, "MotiveId", "Name", Model.MotiveId))">
+                <option value="all">Todos</option>
+            </select>
+        </div>
+
+        <div class="form-group col">
+            <label asp-for="CarId" class="form-label">Carro</label>
+            <select class="form-select"
+                    asp-for="CarId"
+                    asp-items="@(new SelectList(Model.Cars, "CarId", "Name", Model.CarId))">
+                <option value="all">Todos</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="row mb-2">
+        <div class="form-group col">
+            <label asp-for="InitialDate" class="form-label">Data inicial</label>
+            <input class="form-control" asp-for="InitialDate" value="@Model.InitialDate">
+        </div>
+
+        <div class="form-group col">
+            <label asp-for="FinalDate" class="form-label">Data final</label>
+            <input class="form-control" asp-for="FinalDate" value="@Model.FinalDate">
+        </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary mr-3">Filtrar</button>
+    <button type="submit" class="btn btn-secondary" name="clear" value="true">Limpar</button>
+</form>

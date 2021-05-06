@@ -1,0 +1,41 @@
+﻿@model List<Driver>
+<div class="container">
+
+    @if (TempData.Keys.Contains("deleteMessage"))
+    {
+        <h5 class="bg-info text-center text-white p-2">@TempData["deleteMessage"]</h5>
+    }
+
+    <a asp-action="Add" class="btn btn-primary mb-3">Adicionar novo motorista</a>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Nome do motorista</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Driver driver in Model)
+                {
+                    <tr>
+                        <td>@driver.Name</td>
+                        <td>@driver.Email</td>
+                        <td>
+                            <a class="edit"
+                               asp-controller="Driver"
+                               asp-action="Edit"
+                               asp-route-id="@driver.DriverId">Editar</a>
+
+                            <a class="delete"
+                               asp-controller="Driver"
+                               asp-action="Delete"
+                               asp-route-id="@driver.DriverId">Apagar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

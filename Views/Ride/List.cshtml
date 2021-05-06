@@ -1,0 +1,78 @@
+﻿@model RideListViewModel
+@{ 
+    RouteDictionary current = Model.CurrentRoute;
+    RouteDictionary routes = Model.CurrentRoute.Clone();
+}
+<div class="container">
+
+    @if (TempData.Keys.Contains("deleteMessage"))
+    {
+        <h5 class="bg-info text-center text-white p-2">@TempData["deleteMessage"]</h5>
+    }
+
+    <a asp-action="Add" class="btn btn-primary mb-3">Adicionar nova corrida</a>
+
+    @await Component.InvokeAsync("FilterList", new {
+    CarId = current.CarFilter, 
+    DriverId = current.DriverFilter,
+    MotiveId = current.MotiveFilter,
+    InitialDate = current.InitialDate,
+    FinalDate = current.FinalDate
+    })
+    <div class="alert alert-primary mb-3" role="alert">
+        <span class="mr-3">Distância total: @Model.TotalDistance km</span>
+        <span>Custo: @Model.GetTotalCost()?.ToString("c")</span>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered mb-3">
+            <thead>
+                <tr>
+                    <th scope="col">Carro</th>
+                    <th scope="col">Motorista</th>
+                    <th scope="col">Distância</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Ride ride in Model.Rides)
+                {
+                    <tr>
+                        <td>@ride.Car.Name</td>
+                        <td>@ride.Driver.Name</td>
+                        <td>@ride.GetDistance()</td>
+                        <td>@ride.Date?.ToString("d")</td>
+                        <td>
+                            <a class="edit"
+                               asp-controller="Ride"
+                               asp-action="Edit"
+                               asp-route-id="@ride.RideId">Editar</a>
+
+                            <a class="details"
+                               asp-controller="Ride"
+                               asp-action="Details"
+                               asp-route-id="@ride.RideId">Ver detalhes</a>
+
+                            @if (signInManager.IsSignedIn(User))
+                            {
+                                <a class="delete"
+                                   asp-controller="Ride"
+                                   asp-action="Delete"
+                                   asp-route-id="@ride.RideId">Apagar</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @{
+        routes = Model.CurrentRoute.Clone();
+        for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            routes.PageNumber = i;
+            <a asp-action="List" asp-all-route-data="@routes"
+               class="btn btn-primary m-2 @(current.PageNumber == i ? "active" : "")">@i</a>
+        }
+    }
+</div>

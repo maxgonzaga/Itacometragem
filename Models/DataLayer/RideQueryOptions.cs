@@ -15,11 +15,11 @@ namespace Itacometragem.Models
             }
             if (builder.IsFilterByDriver)
             {
-                Where = ride => ride.DriverId.ToString() == builder.Route.DriverFilter;
+                Where = ride => ride.DriverId == Convert.ToInt32(builder.Route.DriverFilter);
             }
             if (builder.IsFilterByMotive)
             {
-                Where = ride => ride.MotiveId.ToString() == builder.Route.MotiveFilter;
+                Where = ride => ride.MotiveId == Convert.ToInt32(builder.Route.MotiveFilter);
             }
             if (builder.IsFilterByDate)
             {

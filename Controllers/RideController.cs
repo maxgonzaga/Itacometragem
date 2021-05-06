@@ -46,7 +46,7 @@ namespace Itacometragem.Controllers
             _data.Save();
             _logger.LogInformation($"RideId: {ride.RideId} was deleted from DB.");
             TempData["deleteMessage"] = "A corrida foi apagada!";
-            return RedirectToAction("Add", "Ride");
+            return RedirectToAction("List", "Ride");
         }
 
         [HttpGet]
@@ -87,10 +87,12 @@ namespace Itacometragem.Controllers
             {
                 if (ride.RideId == 0)
                 {
+                    TempData["insertMessage"] = "A corrida foi registrada.";
                     _data.Rides.Insert(ride);
                 }
                 else
                 {
+                    TempData["updateMessage"] = "A corrida foi editada.";
                     _data.Rides.Update(ride);
                 }
                 _data.Save();

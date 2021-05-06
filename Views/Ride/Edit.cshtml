@@ -1,5 +1,15 @@
 ﻿@model Ride
 <div class="container">
+
+    @if (TempData.Keys.Contains("updateMessage"))
+    {
+        <h5 class="bg-info text-center text-white p-2">@TempData["updateMessage"]</h5>
+    }
+    @if (TempData.Keys.Contains("insertMessage"))
+    {
+        <h5 class="bg-info text-center text-white p-2">@TempData["insertMessage"]</h5>
+    }
+
     <h3 class="mb-3">@ViewBag.Action</h3>
     <form class="mt-4 mb-4" asp-action="Edit" method="post">
 

@@ -59,5 +59,15 @@ namespace Itacometragem.Models
             }
         }
 
+        public double? TotalCost()
+        {
+            double? totalCost = 0;
+            foreach (Ride ride in Rides)
+            {
+                totalCost += ride.GetCost();
+            }
+            return totalCost;
+        }
+
     }
 }

@@ -42,6 +42,7 @@
         <p>Data inicial: @Model.InitialDate?.ToString("dd/MM/yyyy")</p>
         <p>Data final: @Model.FinalDate?.ToString("dd/MM/yyyy")</p>
         <p>Distância total: @Model.TotalDistance()</p>
+        <p>Custo total: @Model.TotalCost()?.ToString("C", CultureInfo.CreateSpecificCulture("pt-BR"))</p>
         <table>
             <thead>
                 <tr>
@@ -58,11 +59,11 @@
                 {
                     <tr class="ride">
                         <td>@ride.Date?.ToString("d")</td>
-                        <td>@ride.Date?.ToString("HH:mm")"</td>
+                        <td>@ride.Date?.ToString("HH:mm")</td>
                         <td>@ride.Car.Name</td>
                         <td>@ride.Driver.Name</td>
                         <td>@ride.GetDistance()</td>
-                        <td>@ride.Motive.Name</td>"
+                        <td>@ride.Motive.Name</td>
                     </tr>
                 }
             </tbody>

@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using DinkToPdf;
 using DinkToPdf.Contracts;
-using Itacometragem.Library;
 using Itacometragem.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -38,7 +37,6 @@ namespace Itacometragem
             services.AddTransient<IItacometragemUnitOfWork, ItacometragemUnitOfWork>();
             services.AddScoped<Helper>(sp => new Helper(sp.GetRequiredService<IItacometragemUnitOfWork>()));
             services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
-            services.AddScoped<IReportService, ReportService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddRouting(options => { 
                 options.LowercaseUrls = true;

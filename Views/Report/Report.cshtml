@@ -1,0 +1,73 @@
+﻿@{ 
+    Layout = null;
+}
+@model Report
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset=utf-8>
+    <title>Registro de Quilometragem</title>
+    <style>
+        body, html {
+            width: 210mm;
+            height: 297mm;
+            font-family: Arial;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            height: 20px;
+        }
+
+        .footer {
+            position: absolute;
+            top: 280mm;
+            left: 0mm;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2 class="title">Motivo: @Model.Motive.Name</h2>
+        <p>Data inicial: @Model.InitialDate?.ToString("dd/MM/yyyy")</p>
+        <p>Data final: @Model.FinalDate?.ToString("dd/MM/yyyy")</p>
+        <p>Distância total: @Model.TotalDistance()</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Carro</th>
+                    <th>Motorista</th>
+                    <th>Distância</th>
+                    <th>Motivo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Ride ride in Model.Rides)
+                {
+                    <tr class="ride">
+                        <td>@ride.Date?.ToString("d")</td>
+                        <td>@ride.Date?.ToString("HH:mm")"</td>
+                        <td>@ride.Car.Name</td>
+                        <td>@ride.Driver.Name</td>
+                        <td>@ride.GetDistance()</td>
+                        <td>@ride.Motive.Name</td>"
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <p class="footer">Data de emissão: @DateTime.Now.ToString("dd/MM/yyyy HH:mm")</p>
+</body>
+</html>

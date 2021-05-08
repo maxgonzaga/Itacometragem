@@ -27,7 +27,7 @@ namespace Itacometragem.Models
         public List<Ride> Rides { get; }
 
         [BindNever]
-        public Driver Motive { get; set; }
+        public Motive Motive { get; set; }
 
 
         public void AddRide(Ride ride)

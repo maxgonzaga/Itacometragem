@@ -1,26 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using Itacometragem.Library;
 using Itacometragem.Models;
-using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 
 namespace Itacometragem.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class ReportController : Controller
     {
-        private readonly IReportService _reportService;
         private readonly IItacometragemUnitOfWork _data;
         private readonly Helper _helper;
 
-        public ReportController(IReportService reportService, IItacometragemUnitOfWork data)
+        public ReportController(IItacometragemUnitOfWork data, Helper helper)
         {
-            _reportService = reportService;
             _data = data;
-            _helper = new Helper(data);
+            _helper = helper;
         }
 
         [HttpGet]
@@ -43,11 +38,9 @@ namespace Itacometragem.Controllers
                     report.AddRide(ride);
                 }
 
-                report.Motive = _data.Drivers.Get(Convert.ToInt32(report.MotiveId));
+                report.Motive = _data.Motives.Get(Convert.ToInt32(report.MotiveId));
 
-                byte[] pdfFile = _reportService.GeneratePdfReport(report);
-
-                return File(pdfFile, "application/octed-stream", $"report-{DateTime.Now:d}.pdf");
+                return View("Report", report);
             }
             else
             {

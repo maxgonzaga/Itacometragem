@@ -14,15 +14,6 @@ namespace Itacometragem.Models
         public int? TotalDistance { get; set; }
         public RouteDictionary CurrentRoute { get; set; }
         public int TotalPages { get; set; }
-
-        public double? GetTotalCost()
-        {
-            double? cost = 0;
-            foreach (Ride ride in Rides)
-            {
-                cost += ride.GetCost();
-            }
-            return cost;
-        }
+        public double? TotalCost { get; set; }
     }
 }

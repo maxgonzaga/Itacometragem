@@ -134,6 +134,7 @@ namespace Itacometragem.Controllers
                 Drivers = _data.Drivers.List(),
                 Motives = _data.Motives.List(),
                 TotalDistance = GetTotalDistance(builder),
+                TotalCost = GetTotalCost(builder),
                 CurrentRoute = builder.Route,
                 TotalPages = builder.GetTotalPages(_data.Rides.Count)
             };
@@ -192,6 +193,23 @@ namespace Itacometragem.Controllers
                 distance += ride.GetDistance();
             }
             return distance;
+        }
+
+        [NonAction]
+        private double? GetTotalCost(RidesGridBuilder builder)
+        {
+            RideQueryOptions options = new RideQueryOptions();
+            options.Includes = "Car";
+            options.Filter(builder);
+            IEnumerable<Ride> rides = _data.Rides.List(options);
+            _helper.PopulateInitialMileage(rides);
+
+            double? cost = 0;
+            foreach (Ride ride in rides)
+            {
+                cost += ride.GetCost();
+            }
+            return cost;
         }
 
     }

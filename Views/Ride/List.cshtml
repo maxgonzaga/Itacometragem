@@ -20,8 +20,8 @@
     FinalDate = current.FinalDate
     })
     <div class="alert alert-primary mb-3" role="alert">
-        <span class="mr-3">Distância total: @Model.TotalDistance km</span>
-        <span>Custo: @Model.GetTotalCost()?.ToString("c")</span>
+        <span><strong>Distância total:</strong> @Model.TotalDistance km | </span>
+        <span><strong>Custo total:</strong> @Model.TotalCost?.ToString("C", CultureInfo.CreateSpecificCulture("pt-BR"))</span>
     </div>
     <div class="table-responsive">
         <table class="table table-bordered mb-3">

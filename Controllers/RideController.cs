@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Itacometragem.Models;
 using Microsoft.Extensions.Logging;
-using System;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Itacometragem.Controllers
@@ -52,7 +51,7 @@ namespace Itacometragem.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Ride ride = _data.Rides.Get(GetQueryOptionsForRide(id));
+            Ride ride = _data.Rides.Get(id);
             ViewBag.Drivers = _data.Drivers.List();
             ViewBag.Cars = _data.Cars.List();
             ViewBag.Motives = _data.Motives.List();
@@ -63,25 +62,7 @@ namespace Itacometragem.Controllers
         [HttpPost]
         public IActionResult Edit(Ride ride)
         {
-            string key = nameof(Ride.Date);
-            if (ModelState.GetValidationState(key) == ModelValidationState.Valid)
-            {
-                if (ride.Date > DateTime.Now)
-                {
-                    ModelState.AddModelError(key, "A data não pode estar no futuro.");
-                }
-            }
-
-            key = nameof(Ride.FinalMileage);
-            if (ModelState.IsValid &&
-                ModelState.GetFieldValidationState(key) == ModelValidationState.Valid)
-            {
-                int? lastMileage = _helper.GetMileage(ride);
-                if (ride.FinalMileage < lastMileage)
-                {
-                    ModelState.AddModelError(key, $"A quilometragem final não pode ser menor que {lastMileage}.");
-                }
-            }
+            ValidateMileage(ride);
 
             if (ModelState.IsValid)
             {
@@ -210,6 +191,21 @@ namespace Itacometragem.Controllers
                 cost += ride.GetCost();
             }
             return cost;
+        }
+
+        [NonAction]
+        public void ValidateMileage(Ride ride)
+        {
+            string finalMileageKey = nameof(Ride.FinalMileage);
+            if (ModelState.IsValid &&
+                ModelState.GetFieldValidationState(finalMileageKey) == ModelValidationState.Valid)
+            {
+                int? lastMileage = _helper.GetMileage(ride);
+                if (ride.FinalMileage < lastMileage)
+                {
+                    ModelState.AddModelError(finalMileageKey, $"A quilometragem final não pode ser menor que {lastMileage}.");
+                }
+            }
         }
 
     }

@@ -15,16 +15,15 @@ namespace Itacometragem.Models
         [Required(ErrorMessage = "Selecione o motorista.")]
         public int? DriverId { get; set; }
 
-        [Required(ErrorMessage = "Selectione o motivo")]
+        [Required(ErrorMessage = "Selecione o motivo")]
         public int? MotiveId { get; set; }
 
         public string Note { get; set; }
 
         [Required(ErrorMessage = "Insira a quilometragem final.")]
-        [Range(0, 100000, ErrorMessage = "Insira um valor entre 0 e 100 000.")]
         public int? FinalMileage { get; set; }
 
-        [Required(ErrorMessage = "Insira a data.")]
+        [PastDate]
         [BindProperty, DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
         public DateTime? Date { get; set; }
 

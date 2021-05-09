@@ -4,15 +4,16 @@
 
     <h3 class="mb-3">Detalhes</h3>
 
-
     <div class="card mb-4">
         <ul class="list-group list-group-flush">
             <li class="list-group-item">Carro: @Model.Car.Name</li>
             <li class="list-group-item">Motorista: @Model.Driver.Name</li>
             <li class="list-group-item">Quilometragem inicial: @Model.InitialMileage</li>
             <li class="list-group-item">Quilometragem final: @Model.FinalMileage</li>
+            <li class="list-group-item">Data: @Model.Date?.ToString("d")</li>
+            <li class="list-group-item">Hora: @Model.Date?.ToString("t")</li>
             <li class="list-group-item">Distância: @Model.GetDistance()</li>
-            <li class="list-group-item">Motive: @Model.Motive.Name</li>
+            <li class="list-group-item">Motivo: @Model.Motive.Name</li>
             <li class="list-group-item">Notas: @Model.Note</li>
         </ul>
     </div>

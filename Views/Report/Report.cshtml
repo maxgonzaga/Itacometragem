@@ -10,7 +10,6 @@
     <style>
         body, html {
             width: 210mm;
-            height: 297mm;
             font-family: Arial;
         }
 
@@ -24,25 +23,25 @@
         }
 
         th, td {
-            padding: 12px;
+            padding: 5px;
+            border-color: #555;
             text-align: left;
-            height: 20px;
+            height: 12px;
         }
 
-        .footer {
-            position: absolute;
-            top: 280mm;
-            left: 0mm;
+        .date {
+            color: #555;
         }
     </style>
 </head>
 <body>
     <div>
         <h2 class="title">Motivo: @Model.Motive.Name</h2>
-        <p>Data inicial: @Model.InitialDate?.ToString("dd/MM/yyyy")</p>
-        <p>Data final: @Model.FinalDate?.ToString("dd/MM/yyyy")</p>
-        <p>Distância total: @Model.TotalDistance()</p>
-        <p>Custo total: @Model.TotalCost()?.ToString("C", CultureInfo.CreateSpecificCulture("pt-BR"))</p>
+        <p>Data inicial: @Model.InitialDate?.ToString("d")</p>
+        <p>Data final: @Model.FinalDate?.ToString("d")</p>
+        <p>Distância total: @Model.TotalDistance() km</p>
+        <p>Custo total: @Model.TotalCost()?.ToString("C")</p>
+        <p class="date">Data de emissão: @DateTime.Now.ToString("dd/MM/yyyy HH:mm")</p>
         <table>
             <thead>
                 <tr>
@@ -59,7 +58,7 @@
                 {
                     <tr class="ride">
                         <td>@ride.Date?.ToString("d")</td>
-                        <td>@ride.Date?.ToString("HH:mm")</td>
+                        <td>@ride.Date?.ToString("t")</td>
                         <td>@ride.Car.Name</td>
                         <td>@ride.Driver.Name</td>
                         <td>@ride.GetDistance()</td>
@@ -69,6 +68,5 @@
             </tbody>
         </table>
     </div>
-    <p class="footer">Data de emissão: @DateTime.Now.ToString("dd/MM/yyyy HH:mm")</p>
 </body>
 </html>

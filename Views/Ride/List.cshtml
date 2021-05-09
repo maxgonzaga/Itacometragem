@@ -21,7 +21,7 @@
     })
     <div class="alert alert-primary mb-3" role="alert">
         <span><strong>Distância total:</strong> @Model.TotalDistance km | </span>
-        <span><strong>Custo total:</strong> @Model.TotalCost?.ToString("C", CultureInfo.CreateSpecificCulture("pt-BR"))</span>
+        <span><strong>Custo total:</strong> @Model.TotalCost?.ToString("C")</span>
     </div>
     <div class="table-responsive">
         <table class="table table-bordered mb-3">

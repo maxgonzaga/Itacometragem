@@ -8,7 +8,7 @@ using DinkToPdf;
 using DinkToPdf.Contracts;
 using Itacometragem.Models;
 using Microsoft.AspNetCore.Identity;
-using System;
+using System.Globalization;
 using Microsoft.AspNetCore.Http;
 
 namespace Itacometragem
@@ -73,6 +73,8 @@ namespace Itacometragem
                     name: "default",
                     pattern: "{controller=Ride}/{action=Add}/{id?}");
             });
+
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.CreateSpecificCulture("pt-BR");
             ItacometragemContext.CreateAdminUser(app.ApplicationServices).Wait();
         }
     }

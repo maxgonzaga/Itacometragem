@@ -100,7 +100,8 @@ namespace Itacometragem.Controllers
                 Includes = "Motive, Car, Driver",
                 PageNumber = builder.Route.PageNumber,
                 PageSize = builder.Route.PageSize,
-                OrderBy = ride => ride.Date
+                OrderBy = ride => ride.Date,
+                OrderByDirection = "desc"
             };
             options.Filter(builder);
 

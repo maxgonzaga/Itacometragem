@@ -44,19 +44,12 @@ namespace Itacometragem.Models
 
         public int? TotalDistance()
         {
-            if (Rides.Count == 0)
+            int? totalDistance = 0;
+            foreach (Ride ride in Rides)
             {
-                throw new InvalidOperationException("Report.Rides list is empty.");
+                totalDistance += ride.GetDistance();
             }
-            else
-            {
-                int? totalDistance = 0;
-                foreach (Ride ride in Rides)
-                {
-                    totalDistance += ride.GetDistance();
-                }
-                return totalDistance;
-            }
+            return totalDistance;
         }
 
         public double? TotalCost()

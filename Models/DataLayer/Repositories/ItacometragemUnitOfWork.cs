@@ -8,17 +8,17 @@ namespace Itacometragem.Models
     public class ItacometragemUnitOfWork : IItacometragemUnitOfWork
     {
         private ItacometragemContext _context;
-        private Repository<Ride> _rides;
-        private Repository<Motive> _motives;
-        private Repository<Car> _cars;
-        private Repository<Driver> _drivers;
+        private IRepository<Ride> _rides;
+        private IRepository<Motive> _motives;
+        private IRepository<Car> _cars;
+        private IRepository<Driver> _drivers;
 
         public ItacometragemUnitOfWork(ItacometragemContext context)
         {
             _context = context;
         }
 
-        public Repository<Ride> Rides
+        public IRepository<Ride> Rides
         {
             get
             {
@@ -30,7 +30,7 @@ namespace Itacometragem.Models
             }
         }
 
-        public Repository<Motive> Motives
+        public IRepository<Motive> Motives
         {
             get
             {
@@ -42,7 +42,7 @@ namespace Itacometragem.Models
             }
         }
 
-        public Repository<Car> Cars
+        public IRepository<Car> Cars
         {
             get
             {
@@ -54,7 +54,7 @@ namespace Itacometragem.Models
             }
         }
 
-        public Repository<Driver> Drivers
+        public IRepository<Driver> Drivers
         {
             get
             {

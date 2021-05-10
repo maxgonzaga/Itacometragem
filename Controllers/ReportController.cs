@@ -10,9 +10,9 @@ namespace Itacometragem.Controllers
     public class ReportController : Controller
     {
         private readonly IItacometragemUnitOfWork _data;
-        private readonly Helper _helper;
+        private readonly IHelper _helper;
 
-        public ReportController(IItacometragemUnitOfWork data, Helper helper)
+        public ReportController(IItacometragemUnitOfWork data, IHelper helper)
         {
             _data = data;
             _helper = helper;

@@ -9,10 +9,10 @@ namespace Itacometragem.Controllers
     public class RideController : Controller
     {
         private readonly ILogger<RideController> _logger;
-        private readonly Helper _helper;
+        private readonly IHelper _helper;
         private readonly IItacometragemUnitOfWork _data;
 
-        public RideController(IItacometragemUnitOfWork data, ILogger<RideController> logger, Helper helper)
+        public RideController(IItacometragemUnitOfWork data, ILogger<RideController> logger, IHelper helper)
         {
             _logger = logger;
             _helper = helper;

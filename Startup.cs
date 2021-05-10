@@ -35,7 +35,7 @@ namespace Itacometragem
                 options.Password.RequireUppercase = false;
             }).AddEntityFrameworkStores<ItacometragemContext>().AddDefaultTokenProviders();
             services.AddTransient<IItacometragemUnitOfWork, ItacometragemUnitOfWork>();
-            services.AddScoped<Helper>(sp => new Helper(sp.GetRequiredService<IItacometragemUnitOfWork>()));
+            services.AddScoped<IHelper, Helper>();
             services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddRouting(options => { 

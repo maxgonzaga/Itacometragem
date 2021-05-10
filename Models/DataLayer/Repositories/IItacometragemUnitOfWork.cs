@@ -7,10 +7,10 @@ namespace Itacometragem.Models
 {
     public interface IItacometragemUnitOfWork
     {
-        public Repository<Ride> Rides { get; }
-        public Repository<Motive> Motives { get; }
-        public Repository<Car> Cars { get; }
-        public Repository<Driver> Drivers { get; }
+        public IRepository<Ride> Rides { get; }
+        public IRepository<Motive> Motives { get; }
+        public IRepository<Car> Cars { get; }
+        public IRepository<Driver> Drivers { get; }
         public void Save();
     }
 }

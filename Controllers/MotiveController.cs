@@ -11,14 +11,14 @@ namespace Itacometragem.Controllers
     [Authorize(Roles = "Admin")]
     public class MotiveController : Controller
     {
-        public MotiveController(IItacometragemUnitOfWork data)
+        public MotiveController(IItacometragemUnitOfWork data, IHelper helper)
         {
             _data = data;
-            _helper = new Helper(data);
+            _helper = helper;
         }
 
         private readonly IItacometragemUnitOfWork _data;
-        private readonly Helper _helper;
+        private readonly IHelper _helper;
         
         public IActionResult List()
         {
@@ -100,7 +100,7 @@ namespace Itacometragem.Controllers
             else
             {
                 _data.Motives.Delete(motive);
-                _data.Motives.Save();
+                _data.Save();
                 TempData["deleteMessage"] = "O motivo foi removido!";
             }
             return RedirectToAction("List");

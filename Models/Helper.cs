@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Itacometragem.Models
 {
-    public class Helper
+    public class Helper : IHelper
     {
         private readonly IItacometragemUnitOfWork _data;
 

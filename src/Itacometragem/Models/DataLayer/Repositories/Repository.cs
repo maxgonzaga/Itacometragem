@@ -71,6 +71,5 @@ namespace Itacometragem.Models
         public virtual void Insert(T entity) => _dbSet.Add(entity);
         public virtual void Update(T entity) => _dbSet.Update(entity);
         public virtual void Delete(T entity) => _dbSet.Remove(entity);
-        public virtual void Save() => _context.SaveChanges();
     }
 }

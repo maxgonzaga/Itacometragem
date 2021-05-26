@@ -15,7 +15,7 @@ namespace Itacometragem
 
             CreateDbIfNotExists(host);
 
-            host.Run()
+            host.Run();
         }
 
         private static void CreateDbIfNotExists(IHost host)
